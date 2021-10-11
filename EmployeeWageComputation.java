@@ -7,14 +7,14 @@ public class EmployeeWageComputation {
 		System.out.println("Welcome to Employee Wage Computation Progam");
 		int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 		System.out.println("Calculating Daily Employee Wages");
-		if(empCheck==1) {
+		switch(empCheck) {
+		case 1:
 			System.out.println(wagePerHr*fullDayHr);
-		}
-		else if(empCheck==2) {
+			break;
+		case 2:
 			System.out.println(wagePerHr*partTimeHr);
-		}
-
-		else {
+			break;
+		default:
 			System.out.println("Employee is Absent");
 		}
 	}
