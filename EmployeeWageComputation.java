@@ -1,31 +1,59 @@
 
 
 public class Emp {
-	static int workdayPerMon = 20;
-	static int fullDayHr = 8;
-	static int ParttimeHrs = 4;
-	static int totalworkhrs;
-	static int wagePerHr = 20;
-	private static int empCheck;
-
-	public static void main(String[] args) {
-		System.out.println("Welcome to employee wage computation");
-		for (int i = 0; i <= workdayPerMon; i++) {
-			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-			if (totalworkhrs + fullDayHr > 100 || totalworkhrs + ParttimeHrs > 100) {
-				totalworkhrs = 100;
-				break;
+	
+	public static final int IS_PART_TIME = 1; 
+	public static final int IS_FULL_TIME = 2;
+	public static final int EMP_RATE_PER_HOUR = 2; 
+	public static final int NUM_OF_WORKING_DAYS = 2; 
+	public static final int MAX_HRS_IN_MONTH = 18;
+	
+	public static int computeEmpWage() {
+		
+		//Variables
+			
+		int empHrs = 8, totalEmpHrs = 8, totalWorkingDays = 0;
+		
+		//Computation
+		
+		while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+			
+			totalWorkingDays++;
+		
+			int empCheck = (int) Math.floor(Math.random ()* 18) % 3;
+		
+			switch (empCheck) {
+		
+			case IS_PART_TIME: empHrs = 4;
+			break;
+		
+			case IS_FULL_TIME: empHrs = 8; 
+			break;
+		
+			default:
+		
+				empHrs = 0;
+				
 			}
 		
-		switch (empCheck) {
-		case 1:
-			totalworkhrs += fullDayHr;
-		case 2:
-			totalworkhrs += ParttimeHrs;
-		}}
-		System.out.println(totalworkhrs);
-		System.out.println(totalworkhrs * wagePerHr);
+			totalEmpHrs += empHrs;
+		
+			System.out.println ("Day: " + totalWorkingDays + " Emp Hr: " + empHrs);
+				
+		}
+		
+				int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR; 
+		
+				System.out.println ("Total Emp Wage: " + totalEmpWage); 
+		
+				return totalEmpWage;
+			
+	}
 	
-
-}
+	public static void main(String[] ergs) { 
+		
+		computeEmpWage();
+		
+	}
+	
 }
